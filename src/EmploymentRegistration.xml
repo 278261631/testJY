@@ -1,0 +1,11 @@
+<!-- 就业数据 -->
+<?xml version="1.0" encoding="UTF-8"?> 
+<peoples>
+
+<people>		<name>	张三	</name>			<idCardNum>	650101199006026986	</idCardNum>			</people>
+
+<people>		<name>	李四	</name>			<idCardNum>	650101199006027006	</idCardNum>			</people>
+<people>		<name>	王五	</name>			<idCardNum>	650101199006027022	</idCardNum>			</people>
+																																				
+																																			
+</peoples>    
