@@ -50,7 +50,7 @@ public class TestYHJYForFireFox_11EmpHardMoney  {
     	JSONArray jsonarr=jobj.getJSONArray("people");
     
  
-        WebDriverWait webWaiter=new WebDriverWait(driver, 15);
+        WebDriverWait webWaiter=new WebDriverWait(driver, 30);
         
         driver.switchTo().defaultContent();
         //切换一下 “培训反馈”（因为系统菜单目前是没列到自动测试的里的  用于取消掉其他菜单的展开
@@ -223,7 +223,6 @@ public class TestYHJYForFireFox_11EmpHardMoney  {
 	 * @throws InterruptedException
 	 */
 	public static void empHardMoneySearchApproved(WebDriver driver) throws IOException, InterruptedException {
-		System.out.println("不知道为什么会有延迟 要等好久才出现  难道是因为table是属于YHJY 而我用的sunbin登录的吗？");
 		//获取配置数据
 //		String xmlString=XmlImpl.
 //				readF1(Class.class.getClass().getResource("/").getPath().replace("%20", " ")+"SeleniumTestData.xml");
@@ -231,7 +230,7 @@ public class TestYHJYForFireFox_11EmpHardMoney  {
 //		JSONArray jsonarr=jobj.getJSONArray("people");
 		
 		
-		WebDriverWait webWaiter=new WebDriverWait(driver, 15);
+		WebDriverWait webWaiter=new WebDriverWait(driver, 30);
 		
 		driver.switchTo().defaultContent();
 		//切换一下 “培训反馈”（因为系统菜单目前是没列到自动测试的里的  用于取消掉其他菜单的展开
@@ -354,7 +353,7 @@ public class TestYHJYForFireFox_11EmpHardMoney  {
 	 */
 	public static void empHardMoneySearchGiven(WebDriver driver) throws IOException, InterruptedException {
 		
-		WebDriverWait webWaiter=new WebDriverWait(driver, 15);
+		WebDriverWait webWaiter=new WebDriverWait(driver, 30);
 		
 		driver.switchTo().defaultContent();
 		//切换一下 “培训反馈”（因为系统菜单目前是没列到自动测试的里的  用于取消掉其他菜单的展开
@@ -442,7 +441,7 @@ public class TestYHJYForFireFox_11EmpHardMoney  {
 			elementNext=driver.findElement(By.id("queryBtn"));
 			elementNext.click();
 			
-			Thread.sleep(2000);
+			Thread.sleep(10000);
 			webWaiter.until(new ExpectedCondition<Boolean>(){
 				public Boolean apply(WebDriver d){
 					boolean loadcomplete = d.findElement(By.xpath("/html/body/form/div[2]/div[2]/div[3]/div/div[4]/div/div[1]")).isDisplayed();

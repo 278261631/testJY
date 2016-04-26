@@ -105,7 +105,7 @@ public class TestYHJYForFireFox_CloseAllTab  {
         elementNext = driver.findElement(By.cssSelector("li.close-all"));
         
         elementNext.click();
-//        Thread.sleep(5000);
+        Thread.sleep(3000);
         
         
      

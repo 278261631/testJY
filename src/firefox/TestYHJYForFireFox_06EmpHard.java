@@ -39,7 +39,7 @@ public class TestYHJYForFireFox_06EmpHard  {
     	JSONArray jsonarr=jobj.getJSONArray("people");
     
         
-        WebDriverWait webWaiter=new WebDriverWait(driver, 15);
+        WebDriverWait webWaiter=new WebDriverWait(driver, 30);
         
         driver.switchTo().defaultContent();
         //切换一下 “培训反馈”（因为系统菜单目前是没列到自动测试的里的  用于取消掉其他菜单的展开

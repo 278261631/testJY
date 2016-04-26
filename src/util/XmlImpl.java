@@ -23,6 +23,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.json.JSONObject;
 import org.json.XML;
+import org.openqa.jetty.http.ChunkingOutputStream;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -81,6 +82,52 @@ public class XmlImpl implements XmlInterface{
         } catch (TransformerException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public void createXmlPeoples(String fileName,int age) {
+    	Element root = this.document.createElement("peoples"); 
+    	this.document.appendChild(root); 
+    	Element people = this.document.createElement("people"); 
+    	Element name = this.document.createElement("name"); 
+    	name.appendChild(this.document.createTextNode(ChineseName.genNewName())); 
+    	people.appendChild(name); 
+    	Element idCardNum = this.document.createElement("idCardNum"); 
+    	idCardNum.appendChild(this.document.createTextNode(CreateIDCardNo_Checked.genOneCardId(age))); 
+    	people.appendChild(idCardNum); 
+//    	Element age = this.document.createElement("age"); 
+//    	age.appendChild(this.document.createTextNode("26")); 
+//    	employee.appendChild(age); 
+    	root.appendChild(people); 
+    	Element people1 = this.document.createElement("people"); 
+    	Element name1 = this.document.createElement("name"); 
+    	name1.appendChild(this.document.createTextNode(ChineseName.genNewName())); 
+    	people1.appendChild(name1); 
+    	Element idCardNum1 = this.document.createElement("idCardNum"); 
+    	idCardNum1.appendChild(this.document.createTextNode(CreateIDCardNo_Checked.genOneCardId(age))); 
+    	people1.appendChild(idCardNum1); 
+//    	Element age = this.document.createElement("age"); 
+//    	age.appendChild(this.document.createTextNode("26")); 
+//    	employee.appendChild(age); 
+    	root.appendChild(people); 
+    	root.appendChild(people1); 
+    	TransformerFactory tf = TransformerFactory.newInstance();
+    	try {
+    		Transformer transformer = tf.newTransformer();
+    		DOMSource source = new DOMSource(document);
+    		transformer.setOutputProperty(OutputKeys.ENCODING, "utf8");
+    		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+    		PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
+    		StreamResult result = new StreamResult(pw);
+    		transformer.transform(source, result);
+    		System.out.println("生成XML文件成功!");
+    	} catch (TransformerConfigurationException e) {
+    		System.out.println(e.getMessage());
+    	} catch (IllegalArgumentException e) {
+    		System.out.println(e.getMessage());
+    	} catch (FileNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	} catch (TransformerException e) {
+    		System.out.println(e.getMessage());
+    	}
     }
  
     public  void parserXml(String fileName) {
@@ -168,7 +215,12 @@ public class XmlImpl implements XmlInterface{
 //    	FileInputStream fileStream=new FileInputStream(Class.class.getClass().getResource("/").getPath()+"SeleniumTestData.xml");
 //    	FileInputStream fileStream=new FileInputStream("C:\\Workspaces\\MyEclipse 10_debug\\testJY\\src\\SeleniumTestData.xml");
 
-    	String xmlString=readF1("C:\\Workspaces\\MyEclipse 10_debug\\testJY\\src\\SeleniumTestData.xml");
+//    	String xmlFilePaht="D:\\Workspaces\\SeleniumTestData.xml";//"C:\\Workspaces\\MyEclipse 10_debug\\testJY\\src\\SeleniumTestData.xml"
+    	String xmlFilePaht=Class.class.getClass().getResource("/").getPath().replace("%20", " ")+"SeleniumTestData.xml";
+    	XmlImpl xmlImpl=new XmlImpl();
+    	xmlImpl.init();
+    	xmlImpl.createXmlPeoples(xmlFilePaht,30);
+    	String xmlString=readF1(xmlFilePaht);
     	JSONObject jobj= XML.toJSONObject(xmlString);
 
     	System.out.println(jobj.length());

@@ -90,8 +90,8 @@ public class TestYHJYForFireFox_01AddUser  {
 			Thread.sleep(1000);
 			//身份证号码
 			elementNext = driver.findElement(By.id("yac002"));
-//			elementNext.sendKeys(jsonarr.getJSONObject(i).get("idCardNum").toString());
-			elementNext.sendKeys(CreateIDCardNo_Checked.genOneCardId(40));// 随机生成身份证号码
+			elementNext.sendKeys(jsonarr.getJSONObject(i).get("idCardNum").toString());
+//			elementNext.sendKeys(CreateIDCardNo_Checked.genOneCardId(40));// 随机生成身份证号码
 //			elementNext.sendKeys(CreateIDCardNo.getRandomID());
 			Thread.sleep(1000);
 //			elementNext.sendKeys(Keys.TAB);
@@ -173,13 +173,13 @@ public class TestYHJYForFireFox_01AddUser  {
 			//联系电话
 			elementNext = driver.findElement(By.id("aae005"));
 			elementNext.sendKeys("13800000000");
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			elementNext = driver.findElement(By.id("aae006"));
 			elementNext.sendKeys(jsonarr.getJSONObject(i).get("name").toString());
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			elementNext = driver.findElement(By.id("aae006"));
 			elementNext.sendKeys("住哪里我也不知道");
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			elementNext = driver.findElement(By.id("yau002"));
 //			elementNext.sendKeys("新疆大学");
 //			Thread.sleep(2000);

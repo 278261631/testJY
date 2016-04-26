@@ -53,7 +53,7 @@ public class WebDriverFireFox {
         
         //等待统计图加载完
         try {
-			Thread.sleep(17000);
+			Thread.sleep(5000);//去掉首页的图表后就不用17秒那么久了
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

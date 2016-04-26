@@ -16,14 +16,18 @@ public class TestYHJYForFireFox_99All  {
     			+ "根据不同的电脑  rpc 或者等待显示部分时间可能需要延长");
     	
     	
-    	String xmlString=XmlImpl.
-    			readF1(Class.class.getClass().getResource("/").getPath().replace("%20", " ")+"SeleniumTestData.xml");
-//    			readF1("C:\\Workspaces\\MyEclipse 10_debug\\testJY\\src\\SeleniumTestData.xml");
-    	JSONObject jobj= XML.toJSONObject(xmlString).getJSONObject("peoples");
+//    	String xmlString=XmlImpl.
+//    			readF1(Class.class.getClass().getResource("/").getPath().replace("%20", " ")+"SeleniumTestData.xml");
+////    			readF1("C:\\Workspaces\\MyEclipse 10_debug\\testJY\\src\\SeleniumTestData.xml");
+//    	JSONObject jobj= XML.toJSONObject(xmlString).getJSONObject("peoples");
 //    	Writer writer=null;//
     	//先写入 name 和身份证号码 再读取就不用手动修改XML了
 //		XML.toJSONObject(xmlString).write(writer);
 //    	JSONArray jsonarr=jobj.getJSONArray("people");
+    	String xmlFilePaht=Class.class.getClass().getResource("/").getPath().replace("%20", " ")+"SeleniumTestData.xml";
+    	XmlImpl xmlImpl=new XmlImpl();
+    	xmlImpl.init();
+    	xmlImpl.createXmlPeoples(xmlFilePaht,30);
     	
     	WebDriverFireFox webDriverFF=WebDriverFireFox.getInstance();
     	WebDriver driver=webDriverFF.getWebDriver();
@@ -38,6 +42,8 @@ public class TestYHJYForFireFox_99All  {
 		TestYHJYForFireFox_03UserType.confirmUserType(driver);;
 		TestYHJYForFireFox_04LoseJob.addLoseJob(driver);
 		TestYHJYForFireFox_05Paper.paperWhat(driver);
+		//06突然找不到iframe了 关掉标签试试
+		TestYHJYForFireFox_CloseAllTab.CloseAllTab(driver);
 		TestYHJYForFireFox_06EmpHard.empHard(driver);
 		TestYHJYForFireFox_07EmpHardAppro.empHardApprove(driver);
 		
@@ -57,7 +63,7 @@ public class TestYHJYForFireFox_99All  {
 		TestYHJYForFireFox_CloseAllTab.CloseAllTab(driver);
 		TestYHJYForFireFox_11EmpHardMoney.empHardMoneySearchGiven(driver);
 		
-		Thread.sleep(600000);
+		Thread.sleep(60000);
 		driver.quit();//关闭浏览器
     }
 }
