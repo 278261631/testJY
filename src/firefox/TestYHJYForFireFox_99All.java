@@ -12,7 +12,19 @@ import util.XmlImpl;
 
 public class TestYHJYForFireFox_99All  {
     public static void main(String[] args) throws Exception {
-    	System.out.println("需要设置系统 “isDemo” 属性为true ，"
+    	for (int i = 0; i < 20; i++) {
+    		try {
+    			executeTest();
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    			
+    		}
+		}
+    }
+
+	private static void executeTest() throws IOException, InterruptedException,
+			Exception {
+		System.out.println("需要设置系统 “isDemo” 属性为true ，"
     			+ "根据不同的电脑  rpc 或者等待显示部分时间可能需要延长");
     	
     	
@@ -63,7 +75,9 @@ public class TestYHJYForFireFox_99All  {
 		TestYHJYForFireFox_CloseAllTab.CloseAllTab(driver);
 		TestYHJYForFireFox_11EmpHardMoney.empHardMoneySearchGiven(driver);
 		
-		Thread.sleep(60000);
-		driver.quit();//关闭浏览器
-    }
+		Thread.sleep(20000);
+		
+		//关闭浏览器
+//		driver.quit();
+	}
 }

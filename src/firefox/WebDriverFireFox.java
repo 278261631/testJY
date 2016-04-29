@@ -20,7 +20,7 @@ public class WebDriverFireFox {
 	}
 
 	public static WebDriverFireFox getInstance(){
-		System.setProperty("webdriver.firefox.bin", "D:\\Mozilla Firefox\\firefox.exe");
+//		System.setProperty("webdriver.firefox.bin", "D:\\Mozilla Firefox\\firefox.exe");
 		if (firefoxDriver==null) {
 			firefoxDriver= new WebDriverFireFox();
 			driver = new FirefoxDriver();
@@ -35,7 +35,7 @@ public class WebDriverFireFox {
 	
 	public void login(String loginUser,String loginPass){
     	
-		driver.get("http://localhost:8080/");
+		driver.get("http://192.168.1.130:8080/");
 		driver.manage().window().maximize();
         // 获取 网页的 title
         System.out.println("Page title is: " + driver.getTitle());
